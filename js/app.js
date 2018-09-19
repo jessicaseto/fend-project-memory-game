@@ -29,6 +29,9 @@ let matchCounter = 0;
 const movesElement = document.querySelector('.moves');
 movesElement.innerHTML = moveCounter;
 
+// Store the winning modal in a variable
+const winningModal = document.querySelector('.win-modal');
+
 // Shuffle cards
 shuffle(cards);
 
@@ -105,7 +108,7 @@ deck.addEventListener('click', function(event) {
                     removeLastTwoCards(openCards);
                     matchCounter++;
                     if (matchCounter === 8) {
-                        console.log('You win!!! :)');
+                        displayWinningModal(winningModal, moveCounter, 3);
                     }
                 } else { // Remove the last 2 cards from the card list and hide them
                     displayMismatch(openCards);
@@ -171,4 +174,31 @@ function removeLastTwoCards(cardList) {
         cardList.pop();
         cardList.pop();
     }
+}
+
+// Function to display the winning modal
+function displayWinningModal (modal, numMoves, numStars) {
+    // Change to unhidden
+    modal.style.display = 'block';
+
+    // Display the number of moves
+    modal.querySelector('.moves').innerHTML = numMoves;
+    console.log( modal.querySelector('.moves'));
+
+    // Display the star rating
+    const starDisplay = modal.querySelector('.stars');
+    const docFrag = document.createDocumentFragment();
+
+    for(i=1; i<=numStars; i++) {
+        const newStar = document.createElement('li');
+        const icon = document.createElement('i');
+        icon.classList = 'fa fa-star';
+        newStar.appendChild(icon);
+
+        newStar.style.display = 'inline-block';
+        newStar.style.listStyle = 'none';
+        docFrag.appendChild(newStar);
+    }
+
+    starDisplay.appendChild(docFrag);
 }

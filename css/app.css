@@ -112,3 +112,44 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+/*
+ * Styles for the Winning Modal
+ */
+
+.win-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: white;
+}
+
+.modal-text {
+    position: relative;
+    top: 45%;
+    transform: translateY(-50%);
+    text-align:center;
+}
+
+.modal-text .congratulations {
+    font-size: 33px;
+}
+
+.modal-text .move-counter {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.modal-text .star-rating {
+    display: inline-block;
+    margin: 0 20px;
+}
+
+.modal-text .stars {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+}
