@@ -1,3 +1,6 @@
+// Start the game timer
+const timerId = runTimer();
+
 /*
  * Create a list that holds all of your cards
  */
@@ -111,6 +114,7 @@ deck.addEventListener('click', function(event) {
                     matchCounter++;
                     if (matchCounter === 8) {
                         //displayWinningModal(winningModal, moveCounter, 3);
+                        stopTimer(timerId);
                     }
                 } else { // Remove the last 2 cards from the card list and hide them
                     displayMismatch(openCards);
@@ -215,4 +219,31 @@ function displayWinningModal (modal, numMoves, numStars) {
     }
 
     starDisplay.appendChild(docFrag);
+}
+
+// Function to count seconds
+function runTimer() {
+    let seconds = 0;
+    let minutes = 0;
+    let hours = 0;
+
+    const timerId = setInterval(function() {
+        seconds++;
+        if (seconds === 60) {
+            seconds = 0;
+            minutes++;
+            if (minutes === 60) {
+                minutes = 0;
+                hours++;
+            }
+        }
+        console.log(seconds + ' seconds ' + minutes + ' minutes ' + hours + ' hours have elapsed!');
+    }, 1000);
+
+    return timerId;
+}
+
+// Function to stop timer
+function stopTimer(timerId) {
+    clearTimeout(timerId);
 }
