@@ -127,11 +127,21 @@ h1 {
     background: white;
 }
 
+.modal-close {
+    display: block;
+    bottom: 90%;
+    text-align: center;
+    margin: 0 0 0 90%;
+    padding: 35px;
+    font-size: 50px;
+    cursor: pointer;
+}
+
 .modal-text {
     position: relative;
-    top: 45%;
+    top: 35%;
     transform: translateY(-50%);
-    text-align:center;
+    text-align: center;
 }
 
 .modal-text .congratulations {

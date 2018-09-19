@@ -29,8 +29,10 @@ let matchCounter = 0;
 const movesElement = document.querySelector('.moves');
 movesElement.innerHTML = moveCounter;
 
-// Store the winning modal in a variable
+// Store the winning modal & modal elements in variables
 const winningModal = document.querySelector('.win-modal');
+//const closeModal = winningModal.querySelector('.modal-close');
+displayWinningModal(winningModal, moveCounter, 3);
 
 // Shuffle cards
 shuffle(cards);
@@ -108,7 +110,7 @@ deck.addEventListener('click', function(event) {
                     removeLastTwoCards(openCards);
                     matchCounter++;
                     if (matchCounter === 8) {
-                        displayWinningModal(winningModal, moveCounter, 3);
+                        //displayWinningModal(winningModal, moveCounter, 3);
                     }
                 } else { // Remove the last 2 cards from the card list and hide them
                     displayMismatch(openCards);
@@ -121,6 +123,18 @@ deck.addEventListener('click', function(event) {
             }, 500);
         }
     }
+});
+
+/*
+ * Event listener for winning modal
+ */
+winningModal.addEventListener('click', function(event) {
+    // If close modal button is clicked, toggle winning modal display
+    if (event.target.classList.contains('close')) {
+        winningModal.style.display = 'none';
+    }
+
+    // If replay button is clicked, run replay function
 });
 
 // Function to display a card's symbol
