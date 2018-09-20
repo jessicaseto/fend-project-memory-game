@@ -235,7 +235,6 @@ function displayWinningModal (modal, numMoves, numStars) {
 
     // Display the number of moves
     modal.querySelector('.moves').innerHTML = numMoves;
-    console.log( modal.querySelector('.moves'));
 
     // Display the star rating
     const starDisplay = modal.querySelector('.modal-stars');
