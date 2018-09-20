@@ -1,5 +1,6 @@
 // Start the game timer
-const timerId = runTimer();
+const timer = document.querySelector('.timer');
+const timerId = runTimer(timer);
 
 /*
  * Create a list that holds all of your cards
@@ -222,11 +223,12 @@ function displayWinningModal (modal, numMoves, numStars) {
 }
 
 // Function to count seconds
-function runTimer() {
+function runTimer(timer) {
     let seconds = 0;
     let minutes = 0;
     let hours = 0;
 
+    // Add an interval for counting seconds
     const timerId = setInterval(function() {
         seconds++;
         if (seconds === 60) {
@@ -237,7 +239,10 @@ function runTimer() {
                 hours++;
             }
         }
-        console.log(seconds + ' seconds ' + minutes + ' minutes ' + hours + ' hours have elapsed!');
+        // Display the hours, minutes, and seconds elapsed
+        timer.querySelector('.timer-hours').innerHTML = hours;
+        timer.querySelector('.timer-minutes').innerHTML = minutes;
+        timer.querySelector('.timer-seconds').innerHTML = seconds;
     }, 1000);
 
     return timerId;
