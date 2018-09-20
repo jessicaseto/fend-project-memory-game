@@ -27,9 +27,8 @@ let stars = 3;
 const movesText = document.querySelector('.moves-text');
 const movesElement = document.querySelector('.moves');
 
-// Replay buttons
+// Replay button for main page
 const replayButton = document.querySelector('.fa-repeat');
-const modalReplay = document.querySelector('.modal-replay');
 
 // Store the winning modal & modal elements in variables
 const winningModal = document.querySelector('.win-modal');
@@ -112,16 +111,18 @@ winningModal.addEventListener('click', function(event) {
         winningModal.style.display = 'none';
     }
 
-    // If replay button is clicked, run replay function
+    // If replay button is clicked, toggled winning modal display and replayGame()
+    if (event.target.classList.contains('modal-replay')) {
+        winningModal.style.display = 'none';
+        replayGame();
+    }
 });
 
 /*
- * Event listeners for replaying the game:
- * Main screen replay button
- * Winning modal replay button
+ * Event listener for replaying the game from
+ * main screen replay button
  */
 replayButton.addEventListener('click', replayGame);
-modalReplay.addEventListener('click', replayGame);
 
 
 // Function to start the game
