@@ -28,6 +28,9 @@ let stars = 3;
 const movesText = document.querySelector('.moves-text');
 const movesElement = document.querySelector('.moves');
 
+// Replay button
+const replayButton = document.querySelector('.fa-repeat');
+
 // Store the winning modal & modal elements in variables
 const winningModal = document.querySelector('.win-modal');
 
@@ -110,6 +113,39 @@ winningModal.addEventListener('click', function(event) {
     }
 
     // If replay button is clicked, run replay function
+});
+
+/*
+ * Event listener for replaying the game
+ * Main screen replay button
+ */
+replayButton.addEventListener('click', function(event) {
+    // Stop the timer that is currently running
+    clearTimeout(timerId);
+
+    // Reset hours, minutes, and seconds to 0 and display them
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+
+    timer.querySelector('.timer-hours').innerHTML = '00';
+    timer.querySelector('.timer-minutes').innerHTML = '00';
+    timer.querySelector('.timer-seconds').innerHTML = '00';
+
+    // Clear the deck
+    deck.innerHTML = '';
+
+    // Reset the stars
+    stars = 3;
+    document.querySelector('.stars').innerHTML = '';
+
+    // Reset the move counter
+    moveCounter = 0;
+    movesElement.innerHTML = '0';
+    movesText.innerHTML = 'Moves';
+
+    // Start the game again
+    startGame();
 });
 
 // Function to start the game
