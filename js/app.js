@@ -340,6 +340,9 @@ function replayGame() {
     timer.querySelector('.timer-minutes').innerHTML = '00';
     timer.querySelector('.timer-seconds').innerHTML = '00';
 
+    // Reset openCards
+    openCards = [];
+
     // Clear the deck
     deck.innerHTML = '';
 
