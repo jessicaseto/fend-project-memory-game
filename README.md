@@ -6,7 +6,11 @@
 
 ## Instructions
 
-Play the game by clicking on the cards in the grid to find all the pairs!
+Download the repository to play the Matching Game!
+
+Open up the index.html file in a browser and start playing!
+
+To play the game, click on the cards in the grid to try and match all the pairs!
 
 There are 8 pairs within the 16 cards.
 
