@@ -187,3 +187,20 @@ h1 {
     display: inline-block;
     margin: 0 20px;
 }
+
+.modal-text .button-div {
+    margin: 40px 0;
+}
+
+.modal-text .button {
+    width: 100px;
+    height: 50px;
+    font-family: 'Coda', sans-serif;
+    font-size: 15px;
+    background: #3068d6;
+    color: #ffffff;
+    margin: 0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

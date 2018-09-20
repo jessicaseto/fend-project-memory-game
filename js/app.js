@@ -36,6 +36,7 @@ const winningModal = document.querySelector('.win-modal');
 // Start game
  let timerId = startGame();
 
+displayWinningModal(winningModal, moveCounter, stars);
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
