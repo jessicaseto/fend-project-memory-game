@@ -25,18 +25,21 @@ let openCards = [];
 const deck = document.querySelector('.deck');
 
 /*
- * Add counters for number of moves and number of matches
+ * Add counters for number of moves, number of matches, and stars
  * Store element with class name 'moves'
  */
 let moveCounter = 0;
 let matchCounter = 0;
+let stars = 3;
 const movesElement = document.querySelector('.moves');
 movesElement.innerHTML = moveCounter;
 
 // Store the winning modal & modal elements in variables
 const winningModal = document.querySelector('.win-modal');
 //const closeModal = winningModal.querySelector('.modal-close');
-displayWinningModal(winningModal, moveCounter, 3);
+//displayWinningModal(winningModal, moveCounter, 3);
+
+console.log(document.querySelector('.stars'));
 
 // Shuffle cards
 shuffle(cards);
@@ -103,6 +106,14 @@ deck.addEventListener('click', function(event) {
             // Increment the move counter
             moveCounter++;
 
+            // Decrease stars depending on number of moves
+            if (moveCounter === 10 || moveCounter === 15) {
+                if (stars > 1) {
+                    stars--;
+                    document.querySelector('.star').remove();
+                }
+            }
+
             // Display the new move count
             movesElement.innerHTML = moveCounter;
 
@@ -114,7 +125,7 @@ deck.addEventListener('click', function(event) {
                     removeLastTwoCards(openCards);
                     matchCounter++;
                     if (matchCounter === 8) {
-                        //displayWinningModal(winningModal, moveCounter, 3);
+                        displayWinningModal(winningModal, moveCounter, stars);
                         stopTimer(timerId);
                     }
                 } else { // Remove the last 2 cards from the card list and hide them
@@ -205,7 +216,7 @@ function displayWinningModal (modal, numMoves, numStars) {
     console.log( modal.querySelector('.moves'));
 
     // Display the star rating
-    const starDisplay = modal.querySelector('.stars');
+    const starDisplay = modal.querySelector('.modal-stars');
     const docFrag = document.createDocumentFragment();
 
     for(i=1; i<=numStars; i++) {
