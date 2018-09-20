@@ -276,7 +276,11 @@ function displayStars(element, numStars) {
     const docFrag = document.createDocumentFragment();
 
     for(i=1; i<=numStars; i++) {
+        // Create the list item
         const newStar = document.createElement('li');
+        newStar.classlist = 'star';
+
+        // Add the icon
         const icon = document.createElement('i');
         icon.classList = 'fa fa-star';
         newStar.appendChild(icon);
