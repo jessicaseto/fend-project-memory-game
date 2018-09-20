@@ -137,7 +137,9 @@ replayButton.addEventListener('click', function(event) {
 
     // Reset the stars
     stars = 3;
-    document.querySelector('.stars').innerHTML = '';
+    const starDisplay = document.querySelector('.stars');
+    starDisplay.innerHTML = '';
+    displayStars(starDisplay, stars);
 
     // Reset the move counter
     moveCounter = 0;
