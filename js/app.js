@@ -118,36 +118,7 @@ winningModal.addEventListener('click', function(event) {
  * Event listener for replaying the game
  * Main screen replay button
  */
-replayButton.addEventListener('click', function(event) {
-    // Stop the timer that is currently running
-    clearTimeout(timerId);
-
-    // Reset hours, minutes, and seconds to 0 and display them
-    hours = 0;
-    minutes = 0;
-    seconds = 0;
-
-    timer.querySelector('.timer-hours').innerHTML = '00';
-    timer.querySelector('.timer-minutes').innerHTML = '00';
-    timer.querySelector('.timer-seconds').innerHTML = '00';
-
-    // Clear the deck
-    deck.innerHTML = '';
-
-    // Reset the stars
-    stars = 3;
-    const starDisplay = document.querySelector('.stars');
-    starDisplay.innerHTML = '';
-    displayStars(starDisplay, stars);
-
-    // Reset the move counter
-    moveCounter = 0;
-    movesElement.innerHTML = '0';
-    movesText.innerHTML = 'Moves';
-
-    // Start the game again
-    timerId = startGame();
-});
+replayButton.addEventListener('click', replayGame);
 
 // Function to start the game
 function startGame() {
@@ -349,4 +320,36 @@ function pad2(number) {
 
      return (number < 10 ? '0' : '') + number;
 
+}
+
+// Function to replay game
+function replayGame() {
+    // Stop the timer that is currently running
+    clearTimeout(timerId);
+
+    // Reset hours, minutes, and seconds to 0 and display them
+    hours = 0;
+    minutes = 0;
+    seconds = 0;
+
+    timer.querySelector('.timer-hours').innerHTML = '00';
+    timer.querySelector('.timer-minutes').innerHTML = '00';
+    timer.querySelector('.timer-seconds').innerHTML = '00';
+
+    // Clear the deck
+    deck.innerHTML = '';
+
+    // Reset the stars
+    stars = 3;
+    const starDisplay = document.querySelector('.stars');
+    starDisplay.innerHTML = '';
+    displayStars(starDisplay, stars);
+
+    // Reset the move counter
+    moveCounter = 0;
+    movesElement.innerHTML = '0';
+    movesText.innerHTML = 'Moves';
+
+    // Start the game again
+    timerId = startGame();
 }
