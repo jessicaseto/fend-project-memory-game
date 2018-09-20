@@ -243,22 +243,35 @@ function runTimer(timer) {
     let seconds = 0;
     let minutes = 0;
     let hours = 0;
+    let displaySeconds = 0;
+    let displayMinutes = 0;
+    let displayHours = 0;
 
     // Add an interval for counting seconds
     const timerId = setInterval(function() {
         seconds++;
+
+        // Change seconds to two digits if single digit and display seconds
+        displaySeconds = pad2(seconds);
+        timer.querySelector('.timer-seconds').innerHTML = displaySeconds;
+
         if (seconds === 60) {
             seconds = 0;
             minutes++;
+
+            // Change minutes to two digits if single digit and display minutes
+            displayMinutes = pad2(minutes);
+            timer.querySelector('.timer-minutes').innerHTML = displayMinutes;
+
             if (minutes === 60) {
                 minutes = 0;
                 hours++;
+
+                // Change hours to two digits if single digit and display hours
+                displayHours = pad2(hours);
+                timer.querySelector('.timer-hours').innerHTML = displayHours;
             }
         }
-        // Display the hours, minutes, and seconds elapsed
-        timer.querySelector('.timer-hours').innerHTML = hours;
-        timer.querySelector('.timer-minutes').innerHTML = minutes;
-        timer.querySelector('.timer-seconds').innerHTML = seconds;
     }, 1000);
 
     return timerId;
@@ -267,4 +280,13 @@ function runTimer(timer) {
 // Function to stop timer
 function stopTimer(timerId) {
     clearTimeout(timerId);
+}
+
+/* Function to add a leading zero to single digit number, leaves double digits as is
+ * Function from https://www.electrictoolbox.com/pad-number-two-digits-javascript/
+ */
+function pad2(number) {
+
+     return (number < 10 ? '0' : '') + number;
+
 }
