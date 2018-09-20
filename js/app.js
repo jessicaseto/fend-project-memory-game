@@ -1,6 +1,5 @@
-// Start the game timer
+// Add variable for the game timer
 const timer = document.querySelector('.timer');
-const timerId = runTimer(timer);
 
 /*
  * Create a list that holds all of your cards
@@ -35,7 +34,7 @@ const replayButton = document.querySelector('.fa-repeat');
 const winningModal = document.querySelector('.win-modal');
 
 // Start game
-startGame();
+ let timerId = startGame();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -147,7 +146,7 @@ replayButton.addEventListener('click', function(event) {
     movesText.innerHTML = 'Moves';
 
     // Start the game again
-    startGame();
+    timerId = startGame();
 });
 
 // Function to start the game
@@ -180,6 +179,9 @@ function startGame() {
 
     // Append the deck document fragment to the deck UL
     deck.appendChild(deckFragment);
+
+    // Start the timer
+    return runTimer(timer);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
