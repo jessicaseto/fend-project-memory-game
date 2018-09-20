@@ -259,6 +259,16 @@ function displayWinningModal (modal, numMoves, numStars) {
 
     // Display the star rating
     const starDisplay = modal.querySelector('.modal-stars');
+    displayStars(starDisplay, numStars);
+
+    // Display the final timer
+    modal.querySelector('.hours').innerHTML = document.querySelector('.timer-hours').innerHTML;
+    modal.querySelector('.minutes').innerHTML = document.querySelector('.timer-minutes').innerHTML;
+    modal.querySelector('.seconds').innerHTML = document.querySelector('.timer-seconds').innerHTML;
+}
+
+// Function to display the given number of stars on an element
+function displayStars(element, numStars) {
     const docFrag = document.createDocumentFragment();
 
     for(i=1; i<=numStars; i++) {
@@ -272,12 +282,7 @@ function displayWinningModal (modal, numMoves, numStars) {
         docFrag.appendChild(newStar);
     }
 
-    starDisplay.appendChild(docFrag);
-
-    // Display the final timer
-    modal.querySelector('.hours').innerHTML = document.querySelector('.timer-hours').innerHTML;
-    modal.querySelector('.minutes').innerHTML = document.querySelector('.timer-minutes').innerHTML;
-    modal.querySelector('.seconds').innerHTML = document.querySelector('.timer-seconds').innerHTML;
+    element.appendChild(docFrag);
 }
 
 // Function to count seconds
