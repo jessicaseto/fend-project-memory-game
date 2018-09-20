@@ -182,3 +182,8 @@ h1 {
     margin: 0;
     padding: 0;
 }
+
+.modal-text .timer {
+    display: inline-block;
+    margin: 0 20px;
+}

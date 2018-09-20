@@ -220,6 +220,11 @@ function displayWinningModal (modal, numMoves, numStars) {
     }
 
     starDisplay.appendChild(docFrag);
+
+    // Display the final timer
+    modal.querySelector('.hours').innerHTML = document.querySelector('.timer-hours').innerHTML;
+    modal.querySelector('.minutes').innerHTML = document.querySelector('.timer-minutes').innerHTML;
+    modal.querySelector('.seconds').innerHTML = document.querySelector('.timer-seconds').innerHTML;
 }
 
 // Function to count seconds
