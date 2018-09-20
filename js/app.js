@@ -15,13 +15,7 @@ const cards = ['diamond','paper-plane-o','anchor','bolt','cube','leaf','bicycle'
  */
 let openCards = [];
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
- // Store deck in a variable (unordered list)
+// Store deck in a variable (unordered list)
 const deck = document.querySelector('.deck');
 
 /*
@@ -31,54 +25,14 @@ const deck = document.querySelector('.deck');
 let moveCounter = 0;
 let matchCounter = 0;
 let stars = 3;
+const movesText = document.querySelector('.moves-text');
 const movesElement = document.querySelector('.moves');
-movesElement.innerHTML = moveCounter;
 
 // Store the winning modal & modal elements in variables
 const winningModal = document.querySelector('.win-modal');
-//const closeModal = winningModal.querySelector('.modal-close');
-//displayWinningModal(winningModal, moveCounter, 3);
 
-console.log(document.querySelector('.stars'));
-
-// Shuffle cards
-shuffle(cards);
-
-// Loop through the card array and create HTML blocks
-const deckFragment = document.createDocumentFragment();
-
-cards.forEach(function (card) {
-    // Create a new list item for each card
-    const newCard = document.createElement('li');
-    newCard.className = 'card';
-
-    // Add icon to list item
-    const icon = document.createElement('i');
-    icon.className = 'fa fa-' + card;
-    newCard.appendChild(icon);
-
-    // Add created card to deck document fragment
-    deckFragment.appendChild(newCard);
-});
-
-// Append the deck document fragment to the deck UL
-deck.appendChild(deckFragment);
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
-
+// Start game
+startGame();
 
 /*
  * set up the event listener for a card. If a card is clicked:
@@ -115,6 +69,11 @@ deck.addEventListener('click', function(event) {
             }
 
             // Display the new move count
+            if (moveCounter === 1) {
+                movesText.innerHTML = 'Move';
+            } else {
+                movesText.innerHTML = 'Moves';
+            }
             movesElement.innerHTML = moveCounter;
 
             // Add a delay so the card's symbol shows
@@ -152,6 +111,53 @@ winningModal.addEventListener('click', function(event) {
 
     // If replay button is clicked, run replay function
 });
+
+// Function to start the game
+function startGame() {
+    /*
+     * Display the cards on the page
+     *   - shuffle the list of cards using the provided "shuffle" method below
+     *   - loop through each card and create its HTML
+     *   - add each card's HTML to the page
+     */
+    // Shuffle cards
+    shuffle(cards);
+
+    // Loop through the card array and create HTML blocks
+    const deckFragment = document.createDocumentFragment();
+
+    cards.forEach(function (card) {
+        // Create a new list item for each card
+        const newCard = document.createElement('li');
+        newCard.className = 'card';
+
+        // Add icon to list item
+        const icon = document.createElement('i');
+        icon.className = 'fa fa-' + card;
+        newCard.appendChild(icon);
+
+        // Add created card to deck document fragment
+        deckFragment.appendChild(newCard);
+    });
+
+    // Append the deck document fragment to the deck UL
+    deck.appendChild(deckFragment);
+}
+
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
 
 // Function to display a card's symbol
 function displayCardSymbol(card) {
