@@ -37,7 +37,6 @@ const winningModal = document.querySelector('.win-modal');
 // Start game
  let timerId = startGame();
 
-displayWinningModal(winningModal, moveCounter, stars);
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -254,7 +253,7 @@ function displayStars(element, numStars) {
     for(i=1; i<=numStars; i++) {
         // Create the list item
         const newStar = document.createElement('li');
-        newStar.classlist = 'star';
+        newStar.classList = 'star';
 
         // Add the icon
         const icon = document.createElement('i');
