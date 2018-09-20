@@ -314,17 +314,21 @@ function runTimer(timer) {
             seconds = 0;
             minutes++;
 
-            // Change minutes to two digits if single digit and display minutes
+            // Change minutes and seconds to two digits if single digit and display
             displayMinutes = pad2(minutes);
             timer.querySelector('.timer-minutes').innerHTML = displayMinutes;
+            displaySeconds = pad2(seconds);
+            timer.querySelector('.timer-seconds').innerHTML = displaySeconds;
 
             if (minutes === 60) {
                 minutes = 0;
                 hours++;
 
-                // Change hours to two digits if single digit and display hours
+                // Change hours and minutes to two digits if single digit and display
                 displayHours = pad2(hours);
                 timer.querySelector('.timer-hours').innerHTML = displayHours;
+                displayMinutes = pad2(minutes);
+                timer.querySelector('.timer-minutes').innerHTML = displayMinutes;
             }
         }
     }, 1000);
