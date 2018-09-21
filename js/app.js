@@ -357,6 +357,9 @@ function replayGame() {
     movesElement.innerHTML = '0';
     movesText.innerHTML = 'Moves';
 
+    // Reset the match counter
+    matchCounter = 0;
+
     // Start the game again
     timerId = startGame();
 }
