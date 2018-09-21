@@ -350,6 +350,7 @@ function replayGame() {
     stars = 3;
     const starDisplay = document.querySelector('.stars');
     starDisplay.innerHTML = '';
+    document.querySelector('.modal-stars').innerHTML = '';
     displayStars(starDisplay, stars);
 
     // Reset the move counter
